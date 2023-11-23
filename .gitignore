@@ -1,2 +1,8 @@
 build/
 test/
+linux/
+web/
+macos/
+windows/
+ios/
+.dart_tool/
