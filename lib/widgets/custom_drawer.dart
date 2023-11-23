@@ -1,3 +1,4 @@
+import 'package:ez_check_in/classes/attendee.dart';
 import 'package:ez_check_in/qr_scanner_screen/init_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -12,8 +13,10 @@ class CustomDrawer extends StatelessWidget {
     return Drawer(
       child: ListView(
         children: [
-          Column(
-            children:[Image.network("https://raw.githubusercontent.com/devfestindia/website-data-2023/main/devfestindia23-SEO.jpg")
+          Column(children: [
+            // Image.network(
+            // "https://raw.githubusercontent.com/devfestindia/website-data-2023/main/devfestindia23-SEO.jpg")
+            Image.asset("assets/images/DevFestPoster.png")
           ]),
           ListTile(
             leading: const Icon(Icons.qr_code),
@@ -31,12 +34,14 @@ class CustomDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.list),
             title: const Text('Attendees List'),
-            onTap: () {
+            onTap: () async {
               Navigator.pop(context); // Close the drawer
+              // List<Attendee> attendees = await loadAttendeesFromJson();
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => AttendeesList( attendees: loadAttendeesFromJson(),),
+                  builder: (context) => AttendeesList(),
+                  // builder: (context) => AttendeesList(attendees: attendees),
                 ),
               );
             },
