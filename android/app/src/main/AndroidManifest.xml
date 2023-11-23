@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
-        android:label="ez_check_in"
+        android:label="Devfest23's check-in"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
