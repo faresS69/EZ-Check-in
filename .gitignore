@@ -6,3 +6,4 @@ macos/
 windows/
 ios/
 .dart_tool/
+assets/credentials.json
