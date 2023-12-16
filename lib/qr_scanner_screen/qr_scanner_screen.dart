@@ -1,12 +1,7 @@
-import 'dart:convert';
-
-import 'package:ez_check_in/classes/attendee.dart';
 import 'package:ez_check_in/providers/gsheets_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:gsheets/gsheets.dart';
 import '../widgets/custom_drawer.dart';
 
 class QRScannerScreen extends StatefulWidget {
@@ -132,7 +127,7 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
         isProcessing = true;
         context
             .read<GoogleSheetsProvider>()
-            .checkInAttendee(value[0])
+            .checkInAttendee(value[1], "email")
             .then((checkedIn) async => {
                   if (mounted)
                     {
@@ -141,7 +136,7 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text(
                               ' ${value[0]} has been checked in.',
-                              style: TextStyle(color: Colors.black),
+                              style: const TextStyle(color: Colors.black),
                             ),
                             duration: const Duration(seconds: 3),
                             backgroundColor: Colors.green[300],
@@ -153,7 +148,7 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
                             SnackBar(
                               content: Text(
                                 'Some error happened while check-in of ${value[0]}.',
-                                style: TextStyle(color: Colors.black),
+                                style: const TextStyle(color: Colors.black),
                               ),
                               duration: const Duration(seconds: 3),
                               backgroundColor: Colors.red[300],
@@ -162,46 +157,7 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
                         }
                     }
                 });
-        // String credentialsJson =
-        //     await rootBundle.loadString('assets/credentials.json');
-        // var gsheets = GSheets(jsonDecode(credentialsJson));
-        // final ss = await gsheets
-        //     .spreadsheet("1lzZvXZ3-Sb2vDSLPZf9Rgo5bQtKCoTHu0EUwCdBNeQU");
-        // final ws = ss.worksheetByTitle("Sheet1");
-        // if (ws == null) return;
-        // // Handle the scanned QR code data here
-        // // You can use scanData.code to get the content of the QR code
-
-        // var rowIndex = await ws.values.rowIndexOf(value[0], inColumn: 1);
-        // if (rowIndex == -1) {
-        //   return;
-        // }
-        // if ((await ws.values.row(rowIndex))[4] == "TRUE") return;
-        // ws.values
-        //     .insertColumn(5, ["TRUE"], fromRow: rowIndex)
-        //     .then((checkedIn) {
-        //   if (checkedIn) {
-        //     if (mounted) {
-        //       ScaffoldMessenger.of(context).showSnackBar(
-        //         SnackBar(
-        //           content: Text(
-        //             ' ${value[0]} have  been checked in.',
-        //             style: TextStyle(color: Colors.black),
-        //           ),
-        //           duration: const Duration(seconds: 3),
-        //           backgroundColor: Colors.green[400],
-        //         ),
-        //       );
-        //       // Navigator.pop(context);
-        //     }
-        //   }
         // });
-        // if (checkin_success) {
-        //   controller.pauseCamera();
-        // }
-
-        // For example, you can use it to mark the attendee as present
-        // You can also navigate to another screen or perform any other action based on the scanned data
         await Future.delayed(const Duration(seconds: 3));
         setState(() {
           isProcessing = false;
