@@ -1,7 +1,6 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:ez_check_in/SearchAttendees/seachAttendees.dart';
-import 'package:ez_check_in/attendees_list/attendees_list_from_json.dart';
 import 'package:ez_check_in/providers/gsheets_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -20,16 +19,16 @@ class AttendeesList extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
             title: Row(children: <Widget>[
-          Text('Attendees List'),
-          Spacer(),
+          const Text('Attendees List'),
+          const Spacer(),
           IconButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SearchPage()),
+                  MaterialPageRoute(builder: (context) => const SearchPage()),
                 );
               },
-              icon: Icon(Icons.search))
+              icon: const Icon(Icons.search))
         ])),
         body: RefreshIndicator(
           onRefresh: () async {
@@ -57,21 +56,25 @@ class AttendeesList extends StatelessWidget {
                     Text("Phone: ${attendees[index].phoneNumber}"),
                   ],
                 ),
-                trailing: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: (attendees[index].checkIn)
-                          ? Colors.green[300]
-                          : Colors.red[300],
-                    ),
-                    child: IconButton(
-                        onPressed: () => null,
-                        color: Colors.white,
-                        icon: (attendees[index].checkIn)
-                            ? Icon(
-                                Icons.check,
-                              )
-                            : Icon(Icons.close))),
+                trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: attendees[index].checkIn.entries.map((ch) {
+                      return Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: (ch.value)
+                                ? Colors.green[300]
+                                : Colors.red[300],
+                          ),
+                          child: IconButton(
+                              onPressed: () {},
+                              color: Colors.white,
+                              icon: (ch.value)
+                                  ? const Icon(
+                                      Icons.check,
+                                    )
+                                  : const Icon(Icons.close)));
+                    }).toList()),
                 onTap: () {
                   // Navigate to a screen that shows all the details of the attendee
                   Navigator.push(
