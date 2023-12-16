@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 import '../classes/attendee.dart';
@@ -18,6 +19,7 @@ class AttendeeDetailsScreen extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(16, 100, 16, 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               const CircleAvatar(
                 radius: 60.0,
@@ -40,29 +42,47 @@ class AttendeeDetailsScreen extends StatelessWidget {
                 'Phone: ${attendee.phoneNumber}',
                 style: const TextStyle(fontSize: 18.0),
               ),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      "Check-in Status: ",
-                      style: const TextStyle(fontSize: 18.0),
-                    ),
-                    Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: (attendee.checkIn)
-                              ? Colors.green[300]
-                              : Colors.red[300],
-                        ),
-                        child: IconButton(
-                            onPressed: () => null,
-                            color: Colors.white,
-                            icon: (attendee.checkIn)
-                                ? Icon(
-                                    Icons.check,
-                                  )
-                                : Icon(Icons.close)))
-                  ])
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: attendee.checkIn.entries.map((ch) {
+                  return Container(
+                      child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Text(
+                                "${ch.key} : ${attendee.checkInTime[ch.key]}",
+                                style: const TextStyle(fontSize: 18.0),
+                              ),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(16),
+                                    color: (ch.value)
+                                        ? Colors.green[300]
+                                        : Colors.red[300],
+                                  ),
+                                  child: IconButton(
+                                      onPressed: () {},
+                                      color: Colors.white,
+                                      icon: (ch.value)
+                                          ? const Icon(
+                                              Icons.check,
+                                            )
+                                          : const Icon(Icons.close)))
+                            ]),
+                        const SizedBox(
+                          height: 10,
+                        )
+                      ]));
+                }).toList(),
+              )
             ],
           ),
         ),
