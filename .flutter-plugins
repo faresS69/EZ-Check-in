@@ -1,7 +1,21 @@
 # This is a generated file; do not edit or check into version control.
+firebase_auth=/home/madjid/.pub-cache/hosted/pub.dev/firebase_auth-4.15.3/
+firebase_auth_web=/home/madjid/.pub-cache/hosted/pub.dev/firebase_auth_web-5.8.12/
+firebase_core=/home/madjid/.pub-cache/hosted/pub.dev/firebase_core-2.24.2/
+firebase_core_web=/home/madjid/.pub-cache/hosted/pub.dev/firebase_core_web-2.10.0/
+google_sign_in=/home/madjid/.pub-cache/hosted/pub.dev/google_sign_in-6.2.1/
+google_sign_in_android=/home/madjid/.pub-cache/hosted/pub.dev/google_sign_in_android-6.1.20/
+google_sign_in_ios=/home/madjid/.pub-cache/hosted/pub.dev/google_sign_in_ios-5.7.1/
+google_sign_in_web=/home/madjid/.pub-cache/hosted/pub.dev/google_sign_in_web-0.12.3+1/
 path_provider=/home/madjid/.pub-cache/hosted/pub.dev/path_provider-2.1.1/
 path_provider_android=/home/madjid/.pub-cache/hosted/pub.dev/path_provider_android-2.2.1/
 path_provider_foundation=/home/madjid/.pub-cache/hosted/pub.dev/path_provider_foundation-2.3.1/
 path_provider_linux=/home/madjid/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
 path_provider_windows=/home/madjid/.pub-cache/hosted/pub.dev/path_provider_windows-2.2.1/
 qr_code_scanner=/home/madjid/.pub-cache/hosted/pub.dev/qr_code_scanner-1.0.1/
+shared_preferences=/home/madjid/.pub-cache/hosted/pub.dev/shared_preferences-2.2.2/
+shared_preferences_android=/home/madjid/.pub-cache/hosted/pub.dev/shared_preferences_android-2.2.1/
+shared_preferences_foundation=/home/madjid/.pub-cache/hosted/pub.dev/shared_preferences_foundation-2.3.4/
+shared_preferences_linux=/home/madjid/.pub-cache/hosted/pub.dev/shared_preferences_linux-2.3.2/
+shared_preferences_web=/home/madjid/.pub-cache/hosted/pub.dev/shared_preferences_web-2.2.2/
+shared_preferences_windows=/home/madjid/.pub-cache/hosted/pub.dev/shared_preferences_windows-2.3.2/
