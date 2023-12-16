@@ -1,9 +1,7 @@
-import 'package:ez_check_in/classes/attendee.dart';
 import 'package:ez_check_in/qr_scanner_screen/init_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../attendees_list/attendees_list.dart';
-import '../attendees_list/attendees_list_from_json.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
