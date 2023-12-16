@@ -135,7 +135,7 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
                         {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text(
-                              ' ${value[0]} has been checked in.',
+                              ' ${value[0]} has been checked .',
                               style: const TextStyle(color: Colors.black),
                             ),
                             duration: const Duration(seconds: 3),
