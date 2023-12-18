@@ -1,51 +1,42 @@
+// ignore_for_file: must_be_immutable
+
+import 'package:ez_check_in/SearchAttendees/searchAttendees.dart';
+import 'package:ez_check_in/providers/gsheets_provider.dart';
+import 'package:ez_check_in/widgets/attendee_list_view.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../Attendee_details_Screen/attendee_details_screen.dart';
 import '../classes/attendee.dart';
 
 class AttendeesList extends StatelessWidget {
-  final List<Attendee> attendees;
+  late List<Attendee> attendees;
 
-  const AttendeesList({super.key, required this.attendees});
-
+  AttendeesList({super.key});
   @override
   Widget build(BuildContext context) {
+    // context.read<GoogleSheetsProvider>().getAttendees().then((_) => null);
+    attendees = context.watch<GoogleSheetsProvider>().attendees;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Attendees List'),
-      ),
-      body: ListView.builder(
-        shrinkWrap: true,
-        itemCount: attendees.length,
-        itemBuilder: (BuildContext context, int index) {
-          return ListTile(
-            leading: const CircleAvatar(
-              // You can customize the avatar icon as needed
-              child: Icon(Icons.person),
-            ),
-            title: Text(
-              attendees[index].name,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
-            ),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Email: ${attendees[index].email}"),
-                Text("Phone: ${attendees[index].phoneNumber}"),
-              ],
-            ),
-            onTap: () {
-              // Navigate to a screen that shows all the details of the attendee
+          title: Row(children: <Widget>[
+        const Text('Attendees List'),
+        const Spacer(),
+        IconButton(
+            onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => AttendeeDetailsScreen(attendee: attendees[index]),
-                ),
+                MaterialPageRoute(builder: (context) => const SearchPage()),
               );
             },
-          );
-        },
-      ),
+            icon: const Icon(Icons.search))
+      ])),
+      body: RefreshIndicator(
+          onRefresh: () async {
+            await context.read<GoogleSheetsProvider>().getAttendees();
+            // attendees = context.read<GoogleSheetsProvider>().attendees;
+          },
+          child: AttendeeListView(attendees)),
     );
   }
 }
