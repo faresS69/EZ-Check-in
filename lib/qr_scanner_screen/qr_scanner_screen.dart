@@ -127,7 +127,7 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
         isProcessing = true;
         context
             .read<GoogleSheetsProvider>()
-            .checkInAttendee(value[1], "email")
+            .checkInAttendee(value[0], "fullname")
             .then((checkedIn) async => {
                   if (mounted)
                     {
