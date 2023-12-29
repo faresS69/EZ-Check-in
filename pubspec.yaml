@@ -44,11 +44,10 @@ dependencies:
   intl: ^0.19.0
   shared_preferences: ^2.2.2
   js: ^0.6.3
-  google_sign_in: 6.2.1 
-  googleapis_auth: 1.4.1
-  googleapis: ^11.4.0
-  firebase_auth: 4.15.3
-  exponential_back_off: 0.1.0+2 
+  google_sign_in: ^6.2.1 
+  firebase_auth: ^4.15.3
+  googleapis_auth: ^1.4.1 
+  exponential_back_off: ^0.1.0+2 
 
 dev_dependencies:
   flutter_test:
