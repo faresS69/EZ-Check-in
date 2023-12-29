@@ -99,29 +99,35 @@ class _InitQRScannerState extends State<InitQRScanner> {
               },
               child: const Text('Change Google Sheets URL'),
             ),
+
             Text(
-                "Account credential :${context.watch<GoogleSheetsProvider>().randCred}"),
-            DropdownButton(
-              value: (context.read<GoogleSheetsProvider>().randCred),
-              items: List.generate(19, (index) {
-                return DropdownMenuItem(
-                    child: Text("Account ${index + 1}"), value: index + 1);
-              }),
-              onChanged: (i) {
-                print("this is from dropdown $i");
-                context.read<GoogleSheetsProvider>().setRandCred(i!);
-              },
-            ),
-            Padding(
-                padding: EdgeInsets.all(16.0),
-                child: FloatingActionButton(
-                  onPressed: () async {
-                    await context
-                        .read<GoogleSheetsProvider>()
-                        .initializeForWorksheet();
-                  },
-                  child: Icon(Icons.refresh),
-                ))
+                "Service account number:${context.watch<GoogleSheetsProvider>().randCred}"),
+            Center(
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              DropdownButton(
+                value: (context.read<GoogleSheetsProvider>().randCred),
+                items: List.generate(20, (index) {
+                  return DropdownMenuItem(
+                      child: Text("Account ${index + 1}"), value: index + 1);
+                }),
+                onChanged: (i) {
+                  print("this is from dropdown $i");
+                  context.read<GoogleSheetsProvider>().setRandCred(i!);
+                },
+              ),
+              Padding(
+                  padding: EdgeInsets.all(0.0),
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      await context
+                          .read<GoogleSheetsProvider>()
+                          .initializeForWorksheet();
+                    },
+                    child: Icon(Icons.refresh),
+                  ))
+            ])),
+            // SignInScreen()
           ],
         ),
       ),
