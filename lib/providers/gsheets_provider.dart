@@ -149,7 +149,7 @@ class GoogleSheetsProvider with ChangeNotifier, DiagnosticableTreeMixin {
     //     .toList()
     //     .where((element) => element.toLowerCase().contains(field))
     //     .toList()[0];
-    var rowIndex = attendees.indexWhere((element) => element.email == value);
+    var rowIndex = attendees.indexWhere((element) => element.name == value);
     if (rowIndex == -1) {
       return false;
     }
